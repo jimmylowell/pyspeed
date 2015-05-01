@@ -1,0 +1,7 @@
+/old/
+/tiggerpy/
+/olap/
+.project
+.pydevproject
+*pyc
+config_file.py
