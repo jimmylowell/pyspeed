@@ -105,16 +105,8 @@ def create(sponsor_string, server_id):
 		if device in 'web_browser':
 			cmd = "create table public.geo_"  + str(server_id) + "_web_browser" + web_table
 			statusmessage = commitCommand(cmd)
-# 			print statusmessage
-# 			logger.debug(cur.statusmessage + " " + str(self.server_id) + "_" + device)
-# 				print cur.statusmessage
-# 			con.commit()
+			logger.debug(statusmessage + " " + str(server_id) + "_" + device)
 		else:
 			cmd = "create table public.geo_"  + str(server_id) + "_mobile" + mobile_table
-# 				print cmd
 			statusmessage = commitCommand(cmd)
-# 			logger.debug(cur.statusmessage + " " + str(self.server_id) + "_" + device)
-# 				print cur.statusmessage
-# 			con.commit()
-# 		con.commit()
-# 	con.close()
+			logger.debug(statusmessage + " " + str(server_id) + "_" + device)

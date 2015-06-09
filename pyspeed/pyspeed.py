@@ -2,7 +2,7 @@
 from modules.sponsor import SpeedtestSponsor
 from config_file import sponsor_list_config
 
-from modules.tables.olapfact import MobileFact
+from modules.tables import olap
 
 from datetime import date, timedelta
 import logging
@@ -33,14 +33,18 @@ def main():
 	logger.info("Program started")
 	print "Starting"
 	sponsors = [initSponsor(sponsor_config) for sponsor_config in sponsor_list_config]
-	for sponsor in sponsors:
-		sponsor.downloadMissingTSVs(str_yesterday)
-		
+	for sponsor in sponsors:		
+		sponsor.downloadMissingTSVs(str_yesterday)	
+			
 		# PostgreSQL import requires PostGIS
 		sponsor.updateLoadTSVs(str_yesterday)
 	
-	mobile_fact = MobileFact()
-	mobile_fact.makeTable(sponsors)
+	olap.Mobile().makeTable(sponsors)
+	olap.Browser().makeTable(sponsors)
+	
+	olap.Mobile().ExportToFile('/home/jimmy/qgis/site/files/')
+	olap.Browser().ExportToFile('/home/jimmy/qgis/site/files/')
+		
 	logger.info("Done!")
 	print "Done!"
 	
