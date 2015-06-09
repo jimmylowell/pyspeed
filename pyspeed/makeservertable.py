@@ -9,14 +9,6 @@ pg_database = pg_config.get('pg_database')
 pg_user = pg_config.get('pg_user')
 pg_password = pg_config.get('pg_password')
 
-# insert_cmd = """INSERT INTO speedtest_servers
-# (server_id, sponsor_name, 
-# latitude, longitude, name, 
-# country, cc,
-# url, url2, host)
-# VALUES
-# ("""
-
 create_cmd = """CREATE TABLE public.speedtest_servers
 (
   server_id smallint NOT NULL,
